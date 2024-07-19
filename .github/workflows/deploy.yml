@@ -19,7 +19,7 @@ jobs:
           RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
         run: |
           # Wait for a while to let the deployment process start
-          sleep 60
+          sleep 120
 
           # Check deployment status
           DEPLOY_STATUS=$(curl -s -X GET \

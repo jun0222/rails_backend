@@ -15,7 +15,7 @@ jobs:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
           RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
         run: |
-          # Renderでのデプロイが完了するまで待機。サーバーリソースとアプリの状況によって調整が必要
+          # Renderでのデプロイが完了するまで待機。サーバーリソースとアプリの状況によって調整が必要。Renderのプランをあげたり、rubocopとか入れたらそっちで時間かかるので、短くしても良いかも。
           sleep 120
 
           # RenderのAPIをcurlでGETして、最新のデプロイのstatusを取得。あくまで120秒待った後の最新デプロイを参照するので、github actionsでエラーになる場合はRenderのダッシュボードも確認

@@ -1,24 +1,13 @@
-# README
+## 参考
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- [rails チュートリアル](https://railstutorial.jp/chapters/beginning?version=7.0)
 
-Things you may want to cover:
+## コマンド
 
-* Ruby version
+```bash
+# マスターキーの存在確認
+ls config/master.key
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# credentials.yml.encを編集
+EDITOR="code --wait" bin/rails credentials:edit
+```

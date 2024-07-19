@@ -12,7 +12,7 @@ ls config/master.key
 EDITOR="code --wait" bin/rails credentials:edit
 ```
 
-## gemfile のロックでデプロイエラー
+## gemfile の lock でデプロイエラー
 
 ```bash
 validate_platforms!': Your bundle only supports platforms ["x86_64-darwin-22"] but your local platform is x86_64-linux. Add the current platform to the lockfile with bundle lock --add-platform x86_64-linuxand try again. (Bundler::ProductionError)

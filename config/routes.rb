@@ -4,4 +4,7 @@ Rails.application.routes.draw do
 
   # ヘルスチェック
   get '/health_check', to: 'health_checks#index'
+
+  # テキスト共有サービス
+  resources :texts, only: [:index, :new, :create]
 end

@@ -5,6 +5,9 @@
 ## コマンド
 
 ```bash
+# 起動コマンド(環境変数でホストマシンがdotenvに勝たないようにする)
+sh rails.sh
+
 # マスターキーの存在確認
 ls config/master.key
 

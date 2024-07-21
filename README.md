@@ -1,3 +1,51 @@
+## rubocop 導入
+
+```bash
+# Gemfileに追加
+gem 'rubocop', require: false
+gem 'rubocop-rails', require: false
+
+# インストール
+bundle install
+```
+
+## rubocop 設定
+
+**.rubocop.yml**
+
+```yaml
+require: rubocop-rails
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "db/schema.rb"
+    - "bin/*"
+    - "node_modules/**/*"
+
+Rails:
+  Enabled: true
+```
+
+**rubocop 実行**
+
+```bash
+# 全てのファイルをチェック
+bundle exec rubocop
+
+# 慎重な自動修正
+bundle exec rubocop -a
+
+# 自動修正
+bundle exec rubocop -A
+```
+
+## このナレッジを書くタイミング
+
+ビルド待ちなどに書けば良い。  
+要点やコマンドだけで良い。  
+copilot などの保管を 活用。
+
 ## 参考
 
 - [rails チュートリアル](https://railstutorial.jp/chapters/beginning?version=7.0)

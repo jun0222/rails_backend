@@ -2,7 +2,7 @@ name: CheckDeployStatus
 
 on:
   workflow_run:
-    workflows: [RuboCop]
+    workflows: [rubocop]
     types:
       - completed
 

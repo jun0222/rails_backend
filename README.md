@@ -1,3 +1,39 @@
+## pre-commit の設定
+
+```bash
+touch .git/hooks/pre-commit
+
+```
+
+**.git/hooks/pre-commit**
+
+```bash
+#!/bin/sh
+bundle exec rubocop
+if [ $? -ne 0 ]; then
+  echo "RuboCop checks failed, aborting commit."
+  exit 1
+fi
+```
+
+```bash
+chmod +x .git/hooks/pre-commit
+```
+
+## ローカルと github actions での ruby バージョンの違い
+
+ローカルで 3.1.0 なのに github actions では  
+`Your Ruby version is 3.3.4, but your Gemfile specified 3.1.0となる`
+
+**rubocop.yml**
+
+```yaml
+    - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3.4 # プロジェクトに合わせてRubyのバージョンを指定
+```
+
 ## rubocop 導入
 
 ```bash

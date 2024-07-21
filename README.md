@@ -1,3 +1,8 @@
+## workflow の実行設定 github actions
+
+workflows_on の設定は`Code`や`PR`時には表示されない。  
+あくまで Actions の中に表示される。
+
 ## pre-commit の設定
 
 ```bash

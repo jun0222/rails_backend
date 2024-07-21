@@ -1,9 +1,6 @@
-name: CheckDeployedStatus
+name: Check Render Deploy Status
 
-on:
-  workflow_run:
-    workflows: [RuboCop Lint]
-    types: [completed]
+on: [push, pull_request]
 
 jobs:
   deploy:
@@ -16,7 +13,7 @@ jobs:
           RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
         run: |
           # Renderでのデプロイが完了するまで待機。サーバーリソースとアプリの状況によって調整が必要。
-          sleep 90
+          sleep 120
 
           # RenderのAPIをcurlでGETして、最新のデプロイのstatusを取得。あくまで120秒待った後の最新デプロイを参照するので、github actionsでエラーになる場合はRenderのダッシュボードも確認
           DEPLOY_STATUS=$(curl -s -X GET \

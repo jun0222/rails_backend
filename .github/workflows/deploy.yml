@@ -1,9 +1,10 @@
 name: CheckDeployStatus
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["RuboCop"]
+    types:
+      - completed
 
 jobs:
   deploy:

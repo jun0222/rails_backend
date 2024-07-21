@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# テキスト共有用のコントローラ
+# テキスト共有用のコントローラー
 class TextsController < ApplicationController
   def index
     @texts = Text.all

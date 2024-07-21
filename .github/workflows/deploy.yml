@@ -1,4 +1,4 @@
-name: CheckDeployStatus
+name: CheckDeployedStatus
 
 on:
   workflow_run:

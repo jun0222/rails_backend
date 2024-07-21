@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# アプリケーション全体のコントローラ
 class ApplicationController < ActionController::Base
   before_action :basic_auth
 

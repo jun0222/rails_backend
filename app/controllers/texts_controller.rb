@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# テキスト共有用のコントローラ
 class TextsController < ApplicationController
   def index
     @texts = Text.all
@@ -12,7 +13,7 @@ class TextsController < ApplicationController
   def create
     @text = Text.new(text_params)
     if @text.save
-      redirect_to root_path, notice: 'Text was successfully created.'
+      redirect_to root_path, notice: t('.success')
     else
       render :new
     end

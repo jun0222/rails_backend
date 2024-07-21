@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HealthChecksController < ApplicationController
   # 認証をスキップする場合（API等）
   # skip_before_action :verify_authenticity_token, only: [:index]

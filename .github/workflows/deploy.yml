@@ -1,12 +1,16 @@
 name: Check Render Deploy Status
 
 on:
-  push:
+  workflow_run:
+    workflows: ["RuboCop"]
+    types:
+      - completed
     branches:
       - main
 
 jobs:
   deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -15,8 +19,8 @@ jobs:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
           RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
         run: |
-          # Renderでのデプロイが完了するまで待機。サーバーリソースとアプリの状況によって調整が必要。Renderのプランをあげたり、rubocopとか入れたらそっちで時間かかるので、短くしても良いかも。
-          sleep 120
+          # Renderでのデプロイが完了するまで待機。サーバーリソースとアプリの状況によって調整が必要。
+          sleep 60
 
           # RenderのAPIをcurlでGETして、最新のデプロイのstatusを取得。あくまで120秒待った後の最新デプロイを参照するので、github actionsでエラーになる場合はRenderのダッシュボードも確認
           DEPLOY_STATUS=$(curl -s -X GET \

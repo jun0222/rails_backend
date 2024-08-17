@@ -94,8 +94,11 @@ copilot などの保管を 活用。
 ## コマンド
 
 ```bash
+# db起動
+docker compose up -d
+
 # 起動コマンド(環境変数でホストマシンがdotenvに勝たないようにする)
-sh rails.sh
+sh railss.sh
 
 # マスターキーの存在確認
 ls config/master.key

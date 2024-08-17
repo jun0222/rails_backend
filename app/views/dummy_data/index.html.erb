@@ -1,0 +1,28 @@
+<h1>Dummy Data Generator</h1>
+
+<p><strong>Name:</strong> <span id="name"><%= @name %></span></p>
+<p><strong>Date of Birth:</strong> <span id="dob"><%= @dob %></span></p>
+<p><strong>Address:</strong> <span id="address"><%= @address %></span></p>
+<p><strong>UUID:</strong> <span id="uuid"><%= @uuid %></span></p>
+<p><strong>Phone Number:</strong> <span id="phone"><%= @phone %></span></p>
+<p><strong>Postal Code:</strong> <span id="postal_code"><%= @postal_code %></span></p>
+<p><strong>Email:</strong> <span id="email"><%= @email %></span></p>
+
+<button onclick="copyToClipboard('name')">Copy Name</button>
+<button onclick="copyToClipboard('dob')">Copy Date of Birth</button>
+<button onclick="copyToClipboard('address')">Copy Address</button>
+<button onclick="copyToClipboard('uuid')">Copy UUID</button>
+<button onclick="copyToClipboard('phone')">Copy Phone Number</button>
+<button onclick="copyToClipboard('postal_code')">Copy Postal Code</button>
+<button onclick="copyToClipboard('email')">Copy Email</button>
+
+<script>
+  function copyToClipboard(elementId) {
+    var text = document.getElementById(elementId).textContent;
+    navigator.clipboard.writeText(text).then(function() {
+      alert('Copied to clipboard: ' + text);
+    }, function(err) {
+      console.error('Could not copy text: ', err);
+    });
+  }
+</script>

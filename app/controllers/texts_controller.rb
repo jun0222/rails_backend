@@ -13,7 +13,7 @@ class TextsController < ApplicationController
   def create
     @text = Text.new(text_params)
     if @text.save
-      redirect_to root_path, notice: t('.success')
+      redirect_to texts_path, notice: t('.success')
     else
       render :new
     end

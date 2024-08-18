@@ -1,0 +1,7 @@
+<h1>Text to ASCII Art Converter</h1>
+
+<%= form_with url: '/aa/create', method: :post, local: true, data: { turbo: false } do |form| %>
+  <%= form.label :text, "Enter your text:" %>
+  <%= form.text_field :text %>
+  <%= form.submit "Convert to ASCII Art" %>
+<% end %>

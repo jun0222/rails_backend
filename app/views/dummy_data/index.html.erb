@@ -5,54 +5,44 @@
     <tr>
       <th>Field</th>
       <th>Value</th>
-      <th>Action</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Name</td>
-      <td id="name"><%= @name %></td>
-      <td><button onclick="copyToClipboard('name')">Copy</button></td>
+      <th>Name</th>
+      <td id="name" onclick="copyToClipboard('name')"><%= @name %></td>
     </tr>
     <tr>
-      <td>Date of Birth</td>
-      <td id="dob"><%= @dob %></td>
-      <td><button onclick="copyToClipboard('dob')">Copy</button></td>
+      <th>Date of Birth</th>
+      <td id="dob" onclick="copyToClipboard('dob')"><%= @dob %></td>
     </tr>
     <tr>
-      <td>Address</td>
-      <td id="address"><%= @address %></td>
-      <td><button onclick="copyToClipboard('address')">Copy</button></td>
+      <th>Address</th>
+      <td id="address" onclick="copyToClipboard('address')"><%= @address %></td>
     </tr>
     <tr>
-      <td>UUID</td>
-      <td id="uuid"><%= @uuid %></td>
-      <td><button onclick="copyToClipboard('uuid')">Copy</button></td>
+      <th>UUID</th>
+      <td id="uuid" onclick="copyToClipboard('uuid')"><%= @uuid %></td>
     </tr>
     <tr>
-      <td>Phone Number</td>
-      <td id="phone"><%= @phone %></td>
-      <td><button onclick="copyToClipboard('phone')">Copy</button></td>
+      <th>Phone Number</th>
+      <td id="phone" onclick="copyToClipboard('phone')"><%= @phone %></td>
     </tr>
     <tr>
-      <td>Postal Code</td>
-      <td id="postal_code"><%= @postal_code %></td>
-      <td><button onclick="copyToClipboard('postal_code')">Copy</button></td>
+      <th>Postal Code</th>
+      <td id="postal_code" onclick="copyToClipboard('postal_code')"><%= @postal_code %></td>
     </tr>
     <tr>
-      <td>Email</td>
-      <td id="email"><%= @email %></td>
-      <td><button onclick="copyToClipboard('email')">Copy</button></td>
+      <th>Email</th>
+      <td id="email" onclick="copyToClipboard('email')"><%= @email %></td>
     </tr>
     <tr>
-      <td>JWT</td>
-      <td id="jwt"><%= @jwt %></td>
-      <td><button onclick="copyToClipboard('jwt')">Copy</button></td>
+      <th>JWT</th>
+      <td id="jwt" onclick="copyToClipboard('jwt')"><%= @jwt %></td>
     </tr>
     <tr>
-      <td>Base64 Encoded</td>
-      <td id="base64"><%= @base64 %></td>
-      <td><button onclick="copyToClipboard('base64')">Copy</button></td>
+      <th>Base64 Encoded</th>
+      <td id="base64" onclick="copyToClipboard('base64')"><%= @base64 %></td>
     </tr>
   </tbody>
 </table>
@@ -73,20 +63,12 @@
     background-color: #f4f4f4;
   }
 
-  button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
+  td {
     cursor: pointer;
   }
 
-  button:hover {
-    background-color: #45a049;
+  td:hover {
+    background-color: #f0f0f0;
   }
 </style>
 

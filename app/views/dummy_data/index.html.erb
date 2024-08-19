@@ -3,31 +3,31 @@
 <table>
   <thead>
     <tr>
-      <th>Field</th>
-      <th>Name</th>
-      <th>Date of Birth</th>
-      <th>Address</th>
+      <th>氏名</th>
+      <th>生年月日</th>
+      <th>電話番号</th>
+      <th>住所</th>
       <th>UUID</th>
-      <th>Phone Number</th>
-      <th>Postal Code</th>
+      <th>郵便番号</th>
       <th>Email</th>
       <th>JWT</th>
       <th>Base64 Encoded</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th>Value</th>
-      <td id="name" onclick="copyToClipboard('name')"><%= @name %></td>
-      <td id="dob" onclick="copyToClipboard('dob')"><%= @dob %></td>
-      <td id="address" onclick="copyToClipboard('address')"><%= @address %></td>
-      <td id="uuid" onclick="copyToClipboard('uuid')"><%= @uuid %></td>
-      <td id="phone" onclick="copyToClipboard('phone')"><%= @phone %></td>
-      <td id="postal_code" onclick="copyToClipboard('postal_code')"><%= @postal_code %></td>
-      <td id="email" onclick="copyToClipboard('email')"><%= @email %></td>
-      <td id="jwt" onclick="copyToClipboard('jwt')"><%= @jwt %></td>
-      <td id="base64" onclick="copyToClipboard('base64')"><%= @base64 %></td>
-    </tr>
+    <% @dummy_data.each_with_index do |data, index| %>
+      <tr>
+        <td id="name-<%= index %>" onclick="copyToClipboard('name-<%= index %>')"><%= data[:name] %></td>
+        <td id="dob-<%= index %>" onclick="copyToClipboard('dob-<%= index %>')"><%= data[:dob] %></td>
+        <td id="address-<%= index %>" onclick="copyToClipboard('address-<%= index %>')"><%= data[:address] %></td>
+        <td id="uuid-<%= index %>" onclick="copyToClipboard('uuid-<%= index %>')"><%= data[:uuid] %></td>
+        <td id="phone-<%= index %>" onclick="copyToClipboard('phone-<%= index %>')"><%= data[:phone] %></td>
+        <td id="postal_code-<%= index %>" onclick="copyToClipboard('postal_code-<%= index %>')"><%= data[:postal_code] %></td>
+        <td id="email-<%= index %>" onclick="copyToClipboard('email-<%= index %>')"><%= data[:email] %></td>
+        <td id="jwt-<%= index %>" onclick="copyToClipboard('jwt-<%= index %>')"><%= data[:jwt] %></td>
+        <td id="base64-<%= index %>" onclick="copyToClipboard('base64-<%= index %>')"><%= data[:base64] %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 

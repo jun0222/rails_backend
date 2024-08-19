@@ -15,7 +15,7 @@ class DummyDataController < ApplicationController
         dob: Faker::Date.birthday(min_age: 18, max_age: 65),
         address: "#{Faker::Address.city}#{Faker::Address.street_address}", # 日本の住所
         uuid: SecureRandom.uuid,
-        phone: Faker::PhoneNumber.cell_phone_in_e164,
+        phone: generate_custom_phone_number, # fakerの電話番号はほしい形式じゃないので自作
         postal_code: Faker::Address.zip_code,
         email: Faker::Internet.email(domain: 'example.com'),
         # rubocop:disable all
@@ -23,5 +23,17 @@ class DummyDataController < ApplicationController
         base64: Base64.encode64('サンプルデータ') # Base64エンコードされた文字列
       }
     end
+  end
+
+  private
+
+  def generate_custom_phone_number
+    prefix = ['090', '080', '03'].sample
+    middle = if prefix == '03'
+               rand(1000..9999).to_s
+             else
+               rand(1000..9999).to_s
+             end
+    "#{prefix}-#{middle}-XXXX"
   end
 end

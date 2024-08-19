@@ -1,20 +1,94 @@
 <h1>Dummy Data Generator</h1>
 
-<p><strong>Name:</strong> <span id="name"><%= @name %></span></p>
-<p><strong>Date of Birth:</strong> <span id="dob"><%= @dob %></span></p>
-<p><strong>Address:</strong> <span id="address"><%= @address %></span></p>
-<p><strong>UUID:</strong> <span id="uuid"><%= @uuid %></span></p>
-<p><strong>Phone Number:</strong> <span id="phone"><%= @phone %></span></p>
-<p><strong>Postal Code:</strong> <span id="postal_code"><%= @postal_code %></span></p>
-<p><strong>Email:</strong> <span id="email"><%= @email %></span></p>
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Value</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Name</td>
+      <td id="name"><%= @name %></td>
+      <td><button onclick="copyToClipboard('name')">Copy</button></td>
+    </tr>
+    <tr>
+      <td>Date of Birth</td>
+      <td id="dob"><%= @dob %></td>
+      <td><button onclick="copyToClipboard('dob')">Copy</button></td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td id="address"><%= @address %></td>
+      <td><button onclick="copyToClipboard('address')">Copy</button></td>
+    </tr>
+    <tr>
+      <td>UUID</td>
+      <td id="uuid"><%= @uuid %></td>
+      <td><button onclick="copyToClipboard('uuid')">Copy</button></td>
+    </tr>
+    <tr>
+      <td>Phone Number</td>
+      <td id="phone"><%= @phone %></td>
+      <td><button onclick="copyToClipboard('phone')">Copy</button></td>
+    </tr>
+    <tr>
+      <td>Postal Code</td>
+      <td id="postal_code"><%= @postal_code %></td>
+      <td><button onclick="copyToClipboard('postal_code')">Copy</button></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td id="email"><%= @email %></td>
+      <td><button onclick="copyToClipboard('email')">Copy</button></td>
+    </tr>
+    <tr>
+      <td>JWT</td>
+      <td id="jwt"><%= @jwt %></td>
+      <td><button onclick="copyToClipboard('jwt')">Copy</button></td>
+    </tr>
+    <tr>
+      <td>Base64 Encoded</td>
+      <td id="base64"><%= @base64 %></td>
+      <td><button onclick="copyToClipboard('base64')">Copy</button></td>
+    </tr>
+  </tbody>
+</table>
 
-<button onclick="copyToClipboard('name')">Copy Name</button>
-<button onclick="copyToClipboard('dob')">Copy Date of Birth</button>
-<button onclick="copyToClipboard('address')">Copy Address</button>
-<button onclick="copyToClipboard('uuid')">Copy UUID</button>
-<button onclick="copyToClipboard('phone')">Copy Phone Number</button>
-<button onclick="copyToClipboard('postal_code')">Copy Postal Code</button>
-<button onclick="copyToClipboard('email')">Copy Email</button>
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f4f4f4;
+  }
+
+  button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+</style>
 
 <script>
   function copyToClipboard(elementId) {

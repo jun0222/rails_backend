@@ -20,12 +20,12 @@
         <td id="name-<%= index %>" onclick="copyToClipboard('name-<%= index %>')"><%= data[:name] %></td>
         <td id="dob-<%= index %>" onclick="copyToClipboard('dob-<%= index %>')"><%= data[:dob] %></td>
         <td id="address-<%= index %>" onclick="copyToClipboard('address-<%= index %>')"><%= data[:address] %></td>
-        <td id="uuid-<%= index %>" onclick="copyToClipboard('uuid-<%= index %>')"><%= data[:uuid] %></td>
+        <td id="uuid-<%= index %>" class="wrap-text" onclick="copyToClipboard('uuid-<%= index %>')"><%= data[:uuid] %></td>
         <td id="phone-<%= index %>" onclick="copyToClipboard('phone-<%= index %>')"><%= data[:phone] %></td>
         <td id="postal_code-<%= index %>" onclick="copyToClipboard('postal_code-<%= index %>')"><%= data[:postal_code] %></td>
         <td id="email-<%= index %>" onclick="copyToClipboard('email-<%= index %>')"><%= data[:email] %></td>
-        <td id="jwt-<%= index %>" onclick="copyToClipboard('jwt-<%= index %>')"><%= data[:jwt] %></td>
-        <td id="base64-<%= index %>" onclick="copyToClipboard('base64-<%= index %>')"><%= data[:base64] %></td>
+        <td id="jwt-<%= index %>" class="wrap-text" onclick="copyToClipboard('jwt-<%= index %>')"><%= data[:jwt] %></td>
+        <td id="base64-<%= index %>" class="wrap-text" onclick="copyToClipboard('base64-<%= index %>')"><%= data[:base64] %></td>
       </tr>
     <% end %>
   </tbody>
@@ -35,12 +35,14 @@
   table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed; /* テーブル全体の幅を固定 */
   }
 
   th, td {
     padding: 10px;
     border: 1px solid #ddd;
     text-align: left;
+    word-wrap: break-word; /* 単語内で折り返しを許可 */
   }
 
   th {
@@ -54,6 +56,10 @@
 
   td:hover {
     background-color: #f0f0f0;
+  }
+
+  .wrap-text {
+    word-break: break-all; /* 長い文字列を途中で折り返し */
   }
 </style>
 

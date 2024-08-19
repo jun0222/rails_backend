@@ -4,44 +4,28 @@
   <thead>
     <tr>
       <th>Field</th>
-      <th>Value</th>
+      <th>Name</th>
+      <th>Date of Birth</th>
+      <th>Address</th>
+      <th>UUID</th>
+      <th>Phone Number</th>
+      <th>Postal Code</th>
+      <th>Email</th>
+      <th>JWT</th>
+      <th>Base64 Encoded</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>Name</th>
+      <th>Value</th>
       <td id="name" onclick="copyToClipboard('name')"><%= @name %></td>
-    </tr>
-    <tr>
-      <th>Date of Birth</th>
       <td id="dob" onclick="copyToClipboard('dob')"><%= @dob %></td>
-    </tr>
-    <tr>
-      <th>Address</th>
       <td id="address" onclick="copyToClipboard('address')"><%= @address %></td>
-    </tr>
-    <tr>
-      <th>UUID</th>
       <td id="uuid" onclick="copyToClipboard('uuid')"><%= @uuid %></td>
-    </tr>
-    <tr>
-      <th>Phone Number</th>
       <td id="phone" onclick="copyToClipboard('phone')"><%= @phone %></td>
-    </tr>
-    <tr>
-      <th>Postal Code</th>
       <td id="postal_code" onclick="copyToClipboard('postal_code')"><%= @postal_code %></td>
-    </tr>
-    <tr>
-      <th>Email</th>
       <td id="email" onclick="copyToClipboard('email')"><%= @email %></td>
-    </tr>
-    <tr>
-      <th>JWT</th>
       <td id="jwt" onclick="copyToClipboard('jwt')"><%= @jwt %></td>
-    </tr>
-    <tr>
-      <th>Base64 Encoded</th>
       <td id="base64" onclick="copyToClipboard('base64')"><%= @base64 %></td>
     </tr>
   </tbody>
@@ -61,6 +45,7 @@
 
   th {
     background-color: #f4f4f4;
+    text-align: center;
   }
 
   td {

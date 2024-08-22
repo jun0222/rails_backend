@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   get 'dummy_data/index'
   # rootで.envなど基礎的な機能の描画をテストする
-  root 'home#index'
+  root 'home#routes'
 
   # ヘルスチェック
   get '/health_check', to: 'health_checks#index'

@@ -14,9 +14,12 @@ jobs:
       postgres:
         image: postgres:latest
         env:
+          RAILS_ENV: test
           POSTGRES_DB: ${{ secrets.PG_CI_TEST_INFO }}
+          PGHOST: localhost
           POSTGRES_USER: ${{ secrets.PG_CI_TEST_INFO }}
           POSTGRES_PASSWORD: ${{ secrets.PG_CI_TEST_INFO }}
+          PGUSER: ${{ secrets.PG_CI_TEST_INFO }}
           PGPASSWORD: ${{ secrets.PG_CI_TEST_INFO }}
         ports:
           - 5432:5432
@@ -43,10 +46,12 @@ jobs:
       - name: Setup Database
         env:
           RAILS_ENV: test
+          POSTGRES_DB: ${{ secrets.PG_CI_TEST_INFO }}
           PGHOST: localhost
+          POSTGRES_USER: ${{ secrets.PG_CI_TEST_INFO }}
+          POSTGRES_PASSWORD: ${{ secrets.PG_CI_TEST_INFO }}
           PGUSER: ${{ secrets.PG_CI_TEST_INFO }}
           PGPASSWORD: ${{ secrets.PG_CI_TEST_INFO }}
-          POSTGRES_DB: ${{ secrets.PG_CI_TEST_INFO }}
         run: |
           bin/rails db:create
           bin/rails db:schema:load

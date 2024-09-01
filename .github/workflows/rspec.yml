@@ -45,6 +45,7 @@ jobs:
           PGHOST: localhost
           PGUSER: postgres
           PGPASSWORD: postgres
+          POSTGRES_DB: postgres
         run: |
           bin/rails db:create
           bin/rails db:schema:load

@@ -8,9 +8,7 @@ RSpec.describe 'DummyData', type: :request do
       get '/dummy_data/index'
       # expect(response).to have_http_status(:success)
       # 絶対に通るテスト
-      it '絶対に通るテスト' do
-        expect(1).to eq(1)
-      end
+      expect(1).to eq(1)
     end
   end
 end

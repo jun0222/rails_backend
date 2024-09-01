@@ -24,7 +24,7 @@ test:
   database: <%= ENV['POSTGRES_DB'] %>
   username: <%= ENV['PGUSER'] %>
   password: <%= ENV['PGPASSWORD'] %>
-  host: <%= ENV['PGHOST'] %>
+  host: localhost
   port: 5432
 
 production:

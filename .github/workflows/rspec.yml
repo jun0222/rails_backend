@@ -53,6 +53,8 @@ jobs:
           PGUSER: ${{ secrets.PG_CI_TEST_INFO }}
           PGPASSWORD: ${{ secrets.PG_CI_TEST_INFO }}
         run: |
+          echo $POSTGRES_USER
+          echo $PGUSER
           bin/rails db:create
           bin/rails db:schema:load
       - name: Run RSpec

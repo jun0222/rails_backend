@@ -16,7 +16,7 @@ jobs:
         env:
           POSTGRES_DB: ${{ secrets.PG_CI_TEST_INFO }}
           POSTGRES_USER: ${{ secrets.PG_CI_TEST_INFO }}
-          POSTGRES_PASSWORD: ${{ secrets.PG_CI_TEST_INFO }}
+          PGPASSWORD: ${{ secrets.PG_CI_TEST_INFO }}
         ports:
           - 5432:5432
         # サービスコンテナが起動するのを待つためのオプション

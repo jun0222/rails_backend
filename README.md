@@ -1,3 +1,10 @@
+## rspec の workflow を追加
+
+- secrets, workflow(rspec.yml), database.yml で環境変数がうまく引き回せなかった。
+- ローカル環境 or CI 時のみ実行される DB コンテナの情報なため、べたがきで一旦対応。
+- CI が通るように既存のテストケースを無効化した
+- デプロイ先(render)では test db の migrate を実施しないように設定変更。
+
 ## workflow の実行設定 github actions
 
 workflows_on の設定は`Code`や`PR`時には表示されない。  

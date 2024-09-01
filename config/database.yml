@@ -23,6 +23,7 @@ test:
   <<: *default
   database: <%= ENV['POSTGRES_DB'] %>
   host: localhost
+  password: <%= ENV['PG_CI_TEST_INFO'] %>
 
 production:
   <<: *default

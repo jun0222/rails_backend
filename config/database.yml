@@ -23,7 +23,7 @@ test:
   <<: *default
   database: <%= ENV['POSTGRES_DB'] %>
   username: <%= ENV['PGUSER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  password: <%= ENV['PGPASSWORD'] %>
   host: localhost
   port: 5432
 

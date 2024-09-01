@@ -14,9 +14,9 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          POSTGRES_DB: <%= ENV['POSTGRES_DB'] %>
-          POSTGRES_USER: <%= ENV['POSTGRES_USER'] %>
-          POSTGRES_PASSWORD: <%= ENV['POSTGRES_PASSWORD'] %>
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
         ports:
           - 5432:5432
         # サービスコンテナが起動するのを待つためのオプション
@@ -44,9 +44,9 @@ jobs:
       - name: Setup Database
         env:
           RAILS_ENV: test
-          PGHOST: localhost
-          PGUSER: postgres
-          PGPASSWORD: postgres
+          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
         run: |
           bin/rails db:create
           bin/rails db:schema:load

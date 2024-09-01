@@ -14,9 +14,9 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          POSTGRES_DB: my_test_database
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: <%= ENV['POSTGRES_DB'] %>
+          POSTGRES_USER: <%= ENV['POSTGRES_USER'] %>
+          POSTGRES_PASSWORD: <%= ENV['POSTGRES_PASSWORD'] %>
         ports:
           - 5432:5432
         # サービスコンテナが起動するのを待つためのオプション

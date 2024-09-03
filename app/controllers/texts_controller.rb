@@ -19,6 +19,12 @@ class TextsController < ApplicationController
     end
   end
 
+  def destroy
+    @text = Text.find(params[:id])
+    @text.destroy
+    redirect_to texts_path, notice: t('.success')
+  end
+
   private
 
   def text_params

@@ -17,5 +17,5 @@ Rails.application.routes.draw do
   get 'aa/show', to: 'aa#show'
 
   # テキスト共有サービス
-  resources :texts, only: %i[index new create]
+  resources :texts, only: %i[index new create destroy]
 end

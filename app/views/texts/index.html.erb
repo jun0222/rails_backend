@@ -58,7 +58,8 @@
         <td>
           <%#%= link_to '表示', text, class: 'btn' %>
           <%#%= link_to '編集', edit_text_path(text), class: 'btn' %>
-          <%#%= link_to '削除', text, method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn' %>
+          <%# TODO: 確認されないので修正する %>
+          <%= button_to '削除', text_path(text), method: :delete, data: { confirm: '本当に削除しますか？' } %>
         </td>
       </tr>
     <% end %>

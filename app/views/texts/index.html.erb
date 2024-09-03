@@ -52,21 +52,26 @@
 <table>
   <tbody>
   <script src="https://unpkg.com/pure-frontend-kit@latest/dist/pure-frontend-kit.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <% @texts.each do |text| %>
       <tr>
-        <td class="copyable" data-content="<%= text.content %>"><%= text.content %></td>
+        <td class="copyable" data-content="<%= text.content %>"><%= simple_format(h(text.content)) %></td>
         <td>
           <%#%= link_to '表示', text, class: 'btn' %>
           <%#%= link_to '編集', edit_text_path(text), class: 'btn' %>
           <%# TODO: 確認されないので修正する %>
-          <%= button_to '削除', text_path(text), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+          <%= button_to text_path(text), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn', style: 'background-color: red; border: red solid 1px;' do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to '新規テキスト作成', new_text_path, class: 'btn' %>
+<div style="text-align: right;">
+  <%= link_to '+', new_text_path, class: 'btn' %>
+</div>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {

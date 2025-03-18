@@ -1,0 +1,19 @@
+<h1>テキストエディタ</h1>
+
+<div class="text-editor-list">
+  <% @text_editors.each do |text_editor| %>
+    <div class="text-editor-card">
+      <h2><%= link_to text_editor.title.present? ? text_editor.title : "無題のドキュメント", text_editor_path(text_editor) %></h2>
+      <p class="text-preview"><%= truncate(text_editor.content, length: 100) %></p>
+      <p class="text-meta">最終更新: <%= text_editor.updated_at.strftime('%Y-%m-%d %H:%M') %></p>
+      <div class="text-actions">
+        <%= link_to '編集', edit_text_editor_path(text_editor), class: 'btn btn-edit' %>
+        <%= link_to '削除', text_editor_path(text_editor), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-delete' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="action-buttons">
+  <%= link_to '新規テキスト作成', new_text_editor_path, class: 'btn btn-primary' %>
+</div>

@@ -18,4 +18,7 @@ Rails.application.routes.draw do
 
   # テキスト共有サービス
   resources :texts, only: %i[index new create destroy]
+
+  # テキストエディタ
+  resources :text_editors
 end

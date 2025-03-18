@@ -4,3 +4,10 @@ ja:
       success: 投稿完了しました
     destroy:
       success: 削除しました
+  text_editor:
+    create:
+      success: テキストが正常に作成されました。
+    update:
+      success: テキストが正常に更新されました。
+    destroy:
+      success: テキストが正常に削除されました。

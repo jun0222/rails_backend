@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   post 'aa/create', to: 'aa#create'
   get 'aa/show', to: 'aa#show'
 
+  # スプレッドシート用のルート
+  get 'spreadsheets', to: 'spreadsheets#index'
+
   # テキスト共有サービス
   resources :texts, only: %i[index new create destroy]
 

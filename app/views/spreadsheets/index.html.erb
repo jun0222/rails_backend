@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>シート投稿クライアント（モック対応）</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 600px; margin: auto; }
+    textarea { width: 100%; height: 80px; margin-bottom: 10px; }
+    button { padding: 8px 16px; margin: 5px 0; }
+    .post { border-bottom: 1px solid #ccc; padding: 10px 0; white-space: pre-wrap; }
+    .pagination { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>投稿クライアント（モック対応）</h1>
+  <textarea id="postText" placeholder="新しい投稿..."></textarea><br>
+  <button onclick="submitPost()">投稿</button>
+
+  <div id="posts"></div>
+  <div class="pagination">
+    <button onclick="prevPage()">前へ</button>
+    <span id="pageInfo"></span>
+    <button onclick="nextPage()">次へ</button>
+  </div>
+
+  <script>
+    const USE_SPREAD_SHEET_MOCK = <%= Rails.env.production? ? 'false' : 'true' %>;  // 環境に応じてモードを切り替える
+    const RANGE = 'A1:A';
+    const PAGE_SIZE = 10;
+    let currentPage = 0;
+    let allPosts = [];
+
+    // モックデータ
+    let mockData = [
+      "モック投稿1", "モック投稿2", "モック投稿3", "モック投稿4",
+      "モック投稿5", "モック投稿6", "モック投稿7", "モック投稿8",
+      "モック投稿9", "モック投稿10", "モック投稿11"
+    ];
+
+    async function fetchPosts() {
+      if (USE_SPREAD_SHEET_MOCK) {
+        allPosts = [...mockData].reverse();
+        renderPage();
+        return;
+      }
+
+      const res = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SPREAD_SHEET_SHEET_ID}/values/${RANGE}?key=${SPREAD_SHEET_API_KEY}`);
+      const data = await res.json();
+      allPosts = (data.values || []).map(r => r[0]).reverse();
+      renderPage();
+    }
+
+    function renderPage() {
+      const start = currentPage * PAGE_SIZE;
+      const pagePosts = allPosts.slice(start, start + PAGE_SIZE);
+      document.getElementById('posts').innerHTML = pagePosts.map(p => `<div class="post">${p}</div>`).join('');
+      document.getElementById('pageInfo').innerText = `${currentPage + 1} / ${Math.ceil(allPosts.length / PAGE_SIZE)}`;
+    }
+
+    function nextPage() {
+      if ((currentPage + 1) * PAGE_SIZE < allPosts.length) {
+        currentPage++;
+        renderPage();
+      }
+    }
+
+    function prevPage() {
+      if (currentPage > 0) {
+        currentPage--;
+        renderPage();
+      }
+    }
+
+    async function submitPost() {
+      const text = document.getElementById('postText').value.trim();
+      if (!text) return alert("投稿内容を入力してください。");
+
+      if (USE_SPREAD_SHEET_MOCK) {
+        mockData.push(text);
+        document.getElementById('postText').value = '';
+        await fetchPosts();
+        return;
+      }
+
+      await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SPREAD_SHEET_SHEET_ID}/values/A1:append?valueInputOption=RAW&key=${SPREAD_SHEET_API_KEY}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ values: [[text]] })
+      });
+
+      document.getElementById('postText').value = '';
+      await fetchPosts();
+    }
+
+    fetchPosts();
+  </script>
+</body>
+</html>

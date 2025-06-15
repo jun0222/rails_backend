@@ -24,6 +24,7 @@
   </div>
 
   <script>
+    const USE_SPREAD_SHEET_MOCK = <%= Rails.env.production? ? 'false' : 'true' %>;  // 環境に応じてモードを切り替える
     const RANGE = 'A1:A';
     const PAGE_SIZE = 10;
     let currentPage = 0;

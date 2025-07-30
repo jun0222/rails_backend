@@ -1,0 +1,45 @@
+# Exported from Render on 2025-07-30T06:22:05Z
+databases:
+- name: rails_backend_db
+  databaseName: rails_backend_db_a9bu
+  user: rails_backend_user
+  region: singapore
+  ipAllowList:
+  - source: 0.0.0.0/0
+    description: everywhere
+  postgresMajorVersion: "13"
+services:
+- type: web
+  name: rails_backend
+  runtime: ruby
+  repo: https://github.com/jun0222/rails_backend
+  plan: starter
+  envVars:
+  - key: BASIC_AUTH_USERNAME
+    sync: false
+  - key: BASIC_AUTH_PASSWORD
+    sync: false
+  - key: WEB_CONCURRENCY
+    sync: false
+  - key: RAILS_MASTER_KEY
+    sync: false
+  - key: POSTGRES_USER
+    sync: false
+  - key: POSTGRES_PASSWORD
+    fromDatabase:
+      name: rails_backend_db
+      property: password
+  - key: POSTGRES_HOST
+    fromDatabase:
+      name: rails_backend_db
+      property: host
+  - key: POSTGRES_DB
+    sync: false
+  region: singapore
+  buildCommand: bundle install; bundle exec rake assets:precompile; bundle exec rake
+    assets:clean; rails db:migrate;
+  startCommand: bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-development}
+  domains:
+  - rb.juns-app.com
+  autoDeployTrigger: commit
+version: "1"

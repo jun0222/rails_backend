@@ -5,9 +5,9 @@ databases:
   user: rails_backend_user
   region: singapore
   ipAllowList:
-  - source: 0.0.0.0/0
+  - source: 0.0.0.0/0 # TODO: DBの接続許可ipはアプリケーションのみに絞る
     description: everywhere
-  postgresMajorVersion: "13"
+  postgresMajorVersion: "16" # TODO: デプロイ時の最新にする
 services:
 - type: web
   name: rails_backend
@@ -38,7 +38,7 @@ services:
   region: singapore
   buildCommand: bundle install; bundle exec rake assets:precompile; bundle exec rake
     assets:clean; rails db:migrate;
-  startCommand: bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-development}
+  startCommand: bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-production}
   domains:
   - rb.juns-app.com
   autoDeployTrigger: commit
